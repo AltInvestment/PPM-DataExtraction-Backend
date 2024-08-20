@@ -142,3 +142,7 @@ cython_debug/
 
 .env
 ppm-dataextraction-a5663aaf4e16.json
+client_secret_763722603813-46vb7u0o1phfnkicfthrus23gltuuls6.apps.googleusercontent.com.json
+tmp/
+*.pdf
+
