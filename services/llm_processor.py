@@ -1,7 +1,37 @@
-from openai import OpenAI  # Or another API depending on which LLM you use
-from utils.logger import logger
+from openai import OpenAI
+import re
+import logging
+import colorlog
+import time
+
+
+def setup_logger():
+    handler = colorlog.StreamHandler()
+    handler.setFormatter(
+        colorlog.ColoredFormatter(
+            "%(log_color)s%(asctime)s %(levelname)s: %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S",
+            log_colors={
+                "DEBUG": "cyan",
+                "INFO": "green",
+                "WARNING": "yellow",
+                "ERROR": "red",
+                "CRITICAL": "bold_red",
+            },
+        )
+    )
+    logger = colorlog.getLogger()
+    logger.setLevel(logging.DEBUG)
+    logger.addHandler(handler)
+    return logger
+
+
+logger = setup_logger()
+logging.getLogger("pdfminer").setLevel(logging.WARNING)
+
 from dotenv import load_dotenv
 import json
+from pdfminer.high_level import extract_text
 
 load_dotenv()
 
@@ -9,7 +39,9 @@ client = OpenAI()
 
 
 # Example function to interact with an LLM like GPT-4o-mini
-def process_text_with_llm(extracted_text):
+def process_text_with_llm(
+    extracted_text_part1, extracted_text_part2, extracted_text_part3
+):
     try:
         # Define the prompt or query for the LLM
         system_prompt = """
@@ -35,7 +67,7 @@ Instructions:
 Extract details about the company's leadership team. Each leader's data should include:
 
 - Deal_ID: Unique identifier for the deal.
-- Name: The leader’s full name.
+- Name: The leader's full name.
 - Title: Their position within the company.
 - Description: A brief biography or description of their experience.
 - Years_in_Industry: Number of years in the industry.
@@ -195,17 +227,33 @@ Extract comprehensive details for each deal. Each entry in the final data table 
 - 721_Upreit: Indicates if 721 Upreit is applicable ("yes", "no", or "optional").
 - Distribution_Timing: Timing of distributions (e.g., "Monthly").
 - Loan_Proceeds: The amount of loan proceeds.
-- Cash_on_Cash_Year_10: Cash-on-cash return for year 10.
-- Ending_Balance_Year_10: Ending balance for year 10.
-- Gross_Revenue_Year_10: Gross revenue for year 10.
-- Total_Expenses_Year_10: Total expenses for year 10.
-- NOI_Year_10: Net Operating Income for year 10.
+- Loan_Proceeds_%: The percentage of loan proceeds relative to total proceeds.
+- Equity_Proceeds: The amount of equity proceeds.
+- Equity_Proceeds_%: The percentage of equity proceeds relative to total proceeds.
+- Selling_Commissions: The amount allocated to selling commissions.
+- Selling_Commissions_%: The percentage of selling commissions.
+- Property_Purchase_Price: The total purchase price of the property.
+- Property_Purchase_Price_%: The percentage of the purchase price relative to total proceeds.
+- Trust_Held_Reserve: The amount reserved and held in trust.
+- Trust_Held_Reserve_%: The percentage of the trust-held reserve.
+- Acquisition_Fees: The fees associated with the acquisition.
+- Acquisition_Fees_%: The percentage of acquisition fees.
+- Bridge_Costs: The costs associated with bridge financing.
+- Bridge_Costs_%: The percentage of bridge costs.
+- Total: The total amount of proceeds.
+- LTV_%: The loan-to-value ratio.
+- Syndication_Load_%: The percentage of syndication load.
+- Cash_on_Cash_Year_1: Cash-on-cash return for year 1.
+- Ending_Balance_Year_1: Ending balance for year 1.
+- Gross_Revenue_Year_1: Gross revenue for year 1.
+- Total_Expenses_Year_1: Total expenses for year 1.
+- NOI_Year_1: Net Operating Income for year 1.
 - Cash_on_Cash_Year_11: Cash-on-cash return for year 11.
 - Ending_Balance_Year_11: Ending balance for year 11.
 - Gross_Revenue_Year_11: Gross revenue for year 11.
 - Total_Expenses_Year_11: Total expenses for year 11.
 - NOI_Year_11: Net Operating Income for year 11.
-
+-- The year data column will be from year 1 to 11 
 Example JSON:
 {
     "Final Data Table": [
@@ -220,66 +268,136 @@ Example JSON:
             "721_Upreit": "no",
             "Distribution_Timing": "Monthly",
             "Loan_Proceeds": "$14,960,000",
-            "Cash_on_Cash_Year_10": "N/A",
-            "Ending_Balance_Year_10": "N/A",
-            "Gross_Revenue_Year_10": "N/A",
-            "Total_Expenses_Year_10": "N/A",
-            "NOI_Year_10": "N/A",
+            "Loan_Proceeds_%": "32.91%",
+            "Equity_Proceeds": "$30,500,000",
+            "Equity_Proceeds_%": "67.09%",
+            "Selling_Commissions": "$2,745,000",
+            "Selling_Commissions_%": "6.04%",
+            "Property_Purchase_Price": "$37,200,000",
+            "Property_Purchase_Price_%": "81.83%",
+            "Trust_Held_Reserve": "$600,000",
+            "Trust_Held_Reserve_%": "1.32%",
+            "Acquisition_Fees": "$423,000",
+            "Acquisition_Fees_%": "1.50%",
+            "Bridge_Costs": "$2,130,000",
+            "Bridge_Costs_%": "4.64%",
+            "Total": "$45,460,000",
+            "LTV_%": "32.91%",
+            "Syndication_Load_%": "18.17%"
+            "Cash_on_Cash_Year_1": "5.24%",
+            "Ending_Balance_Year_1": "$353,501",
+            "Gross_Revenue_Year_1": "$8,665,000",
+            "Total_Expenses_Year_1": "$5,999,750",
+            "NOI_Year_1": "$2,665,250",
+            "Cash_on_Cash_Year_2": "5.25%",
+            "Ending_Balance_Year_2": "$329,935",
+            "Gross_Revenue_Year_2": "$9,174,300",
+            "Total_Expenses_Year_2": "$6,359,735",
+            "NOI_Year_2": "$2,814,565",
             "Cash_on_Cash_Year_11": "N/A",
             "Ending_Balance_Year_11": "N/A",
             "Gross_Revenue_Year_11": "N/A",
             "Total_Expenses_Year_11": "N/A",
             "NOI_Year_11": "N/A"
         },
-        {
-            "Deal_ID": "5555",
-            "Sponsor": "1031 CF",
-            "Deal_Title": "1031CF Portfolio 5 DST",
-            "Disposition_Fee": "4%",
-            "Expected_Hold_Years": "10",
-            "Lender_Type": "N/A",
-            "Diversified": "no",
-            "721_Upreit": "no",
-            "Distribution_Timing": "Monthly",
-            "Loan_Proceeds": "0",
-            "Cash_on_Cash_Year_10": "6.65%",
-            "Ending_Balance_Year_10": "397,895",
-            "Gross_Revenue_Year_10": "$8,468,882",
-            "Total_Expenses_Year_10": "$6,054,425",
-            "NOI_Year_10": "$2,414,457",
-            "Cash_on_Cash_Year_11": "N/A",
-            "Ending_Balance_Year_11": "N/A",
-            "Gross_Revenue_Year_11": "N/A",
-            "Total_Expenses_Year_11": "N/A",
-            "NOI_Year_11": "N/A"
-        }
         // Additional final data table entries go here
     ]
 }
 """
-
+        assistant = client.beta.assistants.create(
+            model="gpt-4o-mini",
+            name="PPM Assistant",
+            instructions=system_prompt,
+        )
         # Call to the LLM API (example with OpenAI's GPT)
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",  # Replace with actual model name
-            messages=[
-                {
-                    "role": "system",
-                    "content": f"{system_prompt}",
-                },
+        # response = client.chat.completions.create(
+        #     model="gpt-4o-mini",
+        #     messages=[
+        #         {
+        #             "role": "system",
+        #             "content": f"{system_prompt}",
+        #         },
+        #         {
+        #             "role": "user",
+        #             "content": f"The following is the extracted text from Part 1 of the PPM Document:\n```{extracted_text_part1}```",
+        #         },
+        # )
+
+        # Process the response to extract relevant data
+        # processed_data = response.choices[0].message.content
+        # logger.info(processed_data)
+        # Step 2: Start a thread for the Assistant
+        thread = client.beta.threads.create()
+
+        run = client.beta.threads.runs.create(
+            thread_id=thread.id,
+            assistant_id=assistant.id,
+            additional_messages=[
                 {
                     "role": "user",
-                    "content": f"The following is the extracted text from the PPM Document ```{extracted_text}```",
+                    "content": f"Here is Part 1 of the extracted text from the PPM Document:\n```{extracted_text_part1}```",
                 },
             ],
         )
+        while run.status != "completed":
+            time.sleep(30)
+            run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
+            if run.status == "completed":
+                logger.info(run)
 
-        # Process the response to extract relevant data
-        processed_data = response.choices[0].message
+        run = client.beta.threads.runs.create(
+            thread_id=thread.id,
+            assistant_id=assistant.id,
+            additional_messages=[
+                {
+                    "role": "user",
+                    "content": f"Here is Part 2 of the extracted text from the PPM Document:\n```{extracted_text_part2}```",
+                }
+            ],
+        )
+
+        while run.status != "completed":
+            time.sleep(30)
+            run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
+            if run.status == "completed":
+                logger.info(run)
+
+        run = client.beta.threads.runs.create(
+            thread_id=thread.id,
+            assistant_id=assistant.id,
+            additional_messages=[
+                {
+                    "role": "user",
+                    "content": f"Here is Part 3, and the final of the extracted text from the PPM Document:\n```{extracted_text_part3}```\n Now process the instructions",
+                }
+            ],
+        )
+
+        while run.status != "completed":
+            time.sleep(30)
+            run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
+            if run.status == "completed":
+                logger.info(run)
+
+        thread_messages = client.beta.threads.messages.list(thread.id)
 
         # Parse the processed data into the relevant sheets
-        extracted_columns = parse_llm_response(processed_data)
+        # extracted_columns = parse_llm_response(processed_data)
 
-        return extracted_columns
+        # Extract the last assistant message
+        last_message = None
+        for message in thread_messages.data:
+            if message.role == "assistant":
+                # Extracting the text content
+                last_message_content = ""
+                for content_part in message.content:
+                    if content_part.type == "text":
+                        last_message_content += content_part.text.value + "\n"
+
+                last_message = last_message_content.strip()
+
+        # Return the last assistant message
+        return last_message
 
     except Exception as e:
         logger.error(f"Failed to process text with LLM: {e}")
@@ -314,3 +432,58 @@ def parse_llm_response(response_text):
             f"An unexpected error occurred while parsing the LLM response: {e}"
         )
         return {}
+
+
+# Function to clean the extracted text by removing extra spaces and newlines
+def clean_extracted_text(text):
+    # Remove leading and trailing whitespace
+    cleaned_text = text.strip()
+    # Replace multiple spaces with a single space
+    cleaned_text = re.sub(r"\s+", " ", cleaned_text)
+    # Optionally, remove excessive newlines (e.g., replace multiple newlines with one)
+    cleaned_text = re.sub(r"\n+", "\n", cleaned_text)
+    return cleaned_text
+
+
+def split_text_into_three_parts(text):
+    part_size = len(text) // 3  # Calculate the size of each part
+    first_part = text[:part_size]
+    second_part = text[part_size : 2 * part_size]
+    third_part = text[2 * part_size :]
+    return first_part, second_part, third_part
+
+
+# New function to process the PDF file
+def process_pdf_file(pdf_path):
+    try:
+        # Extract text from the PDF
+        extracted_text = extract_text(pdf_path)
+
+        if extracted_text.strip():
+            # Clean the extracted text
+            cleaned_text = clean_extracted_text(extracted_text)
+
+            # Split the cleaned text into two parts
+            text_part1, text_part2, text_part3 = split_text_into_three_parts(
+                cleaned_text
+            )
+
+            # Process the cleaned text with the LLM
+            extracted_columns = process_text_with_llm(
+                text_part1, text_part2, text_part3
+            )
+
+            # Return or handle the extracted columns as needed
+            return extracted_columns
+        else:
+            logger.error(f"No text extracted from PDF at {pdf_path}.")
+            return {}
+
+    except Exception as e:
+        logger.error(f"Failed to process PDF file {pdf_path}: {e}")
+        return {}
+
+
+pdf_file_path = "tmp/PPM - Epoch Student Housing DST.pdf"
+extracted_data = process_pdf_file(pdf_file_path)
+logger.info(extracted_data)
