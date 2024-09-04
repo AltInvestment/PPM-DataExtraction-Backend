@@ -2,7 +2,7 @@ from openai import OpenAI
 import re
 import logging
 import colorlog
-import time
+from utils.prompt import system_prompt
 
 
 def setup_logger():
@@ -39,9 +39,7 @@ client = OpenAI()
 
 
 # Example function to interact with an LLM like GPT-4o-mini
-def process_text_with_llm(
-    extracted_text_part1, extracted_text_part2, extracted_text_part3
-):
+def process_text_with_llm(extracted_text):
     try:
         # Define the prompt or query for the LLM
         system_prompt = """
@@ -66,7 +64,7 @@ Instructions:
 1. Leadership Section:
 Extract details about the company's leadership team. Each leader's data should include:
 
-- Deal_ID: Unique identifier for the deal.
+- Deal_ID: Unique identifier for the deal, It will always be numeric.
 - Name: The leader's full name.
 - Title: Their position within the company.
 - Description: A brief biography or description of their experience.
@@ -91,7 +89,7 @@ Example JSON:
 2. Compensation Section:
 Capture details about the compensation structures. Each compensation entry should include:
 
-- Deal_ID: Unique identifier for the deal.
+- Deal_ID: Unique identifier for the deal, It will always be numeric.
 - Type_of_Payment: The type of payment or compensation.
 - Determination_of_Amount: How the amount is determined.
 - Estimated_Amount: The estimated amount.
@@ -118,7 +116,7 @@ Extract the company's past performance metrics. Each track record entry should i
 - PPM_Projected_Cash_on_Cash_Return_2023: Projected cash-on-cash return for 2023.
 - Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023: Average cash-on-cash return from inception through the end of 2023.
 - Property_Type: The type of property associated with the investment.
-- Deal_Id: Unique identifier for the deal.
+- Deal_ID: Unique identifier for the deal, It will always be numeric.
 - Sponsor_Record_Rank: Ranking related to the sponsor's track record.
 
 Example JSON:
@@ -139,7 +137,7 @@ Example JSON:
 4. Projected Results Section:
 Capture future financial projections. Each projected result entry should include year-by-year data:
 
-- Deal_ID: Unique identifier for the deal.
+- Deal_ID: Unique identifier for the deal, It will always be numeric.
 - Year_X (e.g., Year_1, Year_2, etc.): The specific year of the projection.
   - Cash_on_Cash: Cash-on-cash return for the year.
   - Ending_Balance: Ending balance for the year.
@@ -168,7 +166,7 @@ Example JSON:
 5. Use of Proceeds Section:
 Detail how the funds raised will be allocated. Each use of proceeds entry should include:
 
-- Deal_ID: Unique identifier for the deal.
+- Deal_ID: Unique identifier for the deal, It will always be numeric.
 - Loan_Proceeds: The amount of loan proceeds.
 - Loan_Proceeds_%: The percentage of loan proceeds relative to total proceeds.
 - Equity_Proceeds: The amount of equity proceeds.
@@ -217,7 +215,7 @@ Example JSON:
 6. Final Data Table Section:
 Extract comprehensive details for each deal. Each entry in the final data table should include:
 
-- Deal_ID: Unique identifier for the deal.
+- Deal_ID: Unique identifier for the deal, It will always be numeric.
 - Sponsor: The sponsor's name.
 - Deal_Title: Title of the deal.
 - Disposition_Fee: Disposition fee as a percentage.
@@ -304,100 +302,33 @@ Example JSON:
     ]
 }
 """
-        assistant = client.beta.assistants.create(
-            model="gpt-4o-mini",
-            name="PPM Assistant",
-            instructions=system_prompt,
-        )
+
         # Call to the LLM API (example with OpenAI's GPT)
-        # response = client.chat.completions.create(
-        #     model="gpt-4o-mini",
-        #     messages=[
-        #         {
-        #             "role": "system",
-        #             "content": f"{system_prompt}",
-        #         },
-        #         {
-        #             "role": "user",
-        #             "content": f"The following is the extracted text from Part 1 of the PPM Document:\n```{extracted_text_part1}```",
-        #         },
-        # )
-
-        # Process the response to extract relevant data
-        # processed_data = response.choices[0].message.content
-        # logger.info(processed_data)
-        # Step 2: Start a thread for the Assistant
-        thread = client.beta.threads.create()
-
-        run = client.beta.threads.runs.create(
-            thread_id=thread.id,
-            assistant_id=assistant.id,
-            additional_messages=[
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": f"{system_prompt}",
+                },
                 {
                     "role": "user",
-                    "content": f"Here is Part 1 of the extracted text from the PPM Document:\n```{extracted_text_part1}```",
+                    "content": f"The following is the extracted text from the PPM Document:\n```{extracted_text_part1}```",
                 },
             ],
         )
-        while run.status != "completed":
-            time.sleep(30)
-            run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
-            if run.status == "completed":
-                logger.info(run)
 
-        run = client.beta.threads.runs.create(
-            thread_id=thread.id,
-            assistant_id=assistant.id,
-            additional_messages=[
-                {
-                    "role": "user",
-                    "content": f"Here is Part 2 of the extracted text from the PPM Document:\n```{extracted_text_part2}```",
-                }
-            ],
-        )
-
-        while run.status != "completed":
-            time.sleep(30)
-            run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
-            if run.status == "completed":
-                logger.info(run)
-
-        run = client.beta.threads.runs.create(
-            thread_id=thread.id,
-            assistant_id=assistant.id,
-            additional_messages=[
-                {
-                    "role": "user",
-                    "content": f"Here is Part 3, and the final of the extracted text from the PPM Document:\n```{extracted_text_part3}```\n Now process the instructions",
-                }
-            ],
-        )
-
-        while run.status != "completed":
-            time.sleep(30)
-            run = client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
-            if run.status == "completed":
-                logger.info(run)
-
-        thread_messages = client.beta.threads.messages.list(thread.id)
+        # Process the response to extract relevant data
+        processed_data = response.choices[0].message.content
+        logger.info(processed_data)
 
         # Parse the processed data into the relevant sheets
-        # extracted_columns = parse_llm_response(processed_data)
+        extracted_columns = parse_llm_response(processed_data)
 
         # Extract the last assistant message
-        last_message = None
-        for message in thread_messages.data:
-            if message.role == "assistant":
-                # Extracting the text content
-                last_message_content = ""
-                for content_part in message.content:
-                    if content_part.type == "text":
-                        last_message_content += content_part.text.value + "\n"
-
-                last_message = last_message_content.strip()
 
         # Return the last assistant message
-        return last_message
+        return extracted_columns
 
     except Exception as e:
         logger.error(f"Failed to process text with LLM: {e}")
@@ -445,14 +376,6 @@ def clean_extracted_text(text):
     return cleaned_text
 
 
-def split_text_into_three_parts(text):
-    part_size = len(text) // 3  # Calculate the size of each part
-    first_part = text[:part_size]
-    second_part = text[part_size : 2 * part_size]
-    third_part = text[2 * part_size :]
-    return first_part, second_part, third_part
-
-
 # New function to process the PDF file
 def process_pdf_file(pdf_path):
     try:
@@ -463,15 +386,8 @@ def process_pdf_file(pdf_path):
             # Clean the extracted text
             cleaned_text = clean_extracted_text(extracted_text)
 
-            # Split the cleaned text into two parts
-            text_part1, text_part2, text_part3 = split_text_into_three_parts(
-                cleaned_text
-            )
-
             # Process the cleaned text with the LLM
-            extracted_columns = process_text_with_llm(
-                text_part1, text_part2, text_part3
-            )
+            extracted_columns = process_text_with_llm(cleaned_text)
 
             # Return or handle the extracted columns as needed
             return extracted_columns
