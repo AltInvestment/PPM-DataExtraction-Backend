@@ -146,3 +146,4 @@ client_secret_763722603813-46vb7u0o1phfnkicfthrus23gltuuls6.apps.googleuserconte
 tmp/
 *.pdf
 
+/chroma_persist/

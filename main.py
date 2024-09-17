@@ -6,7 +6,7 @@ from services.google_services import (
     list_files_in_drive,
     append_to_google_sheets,
 )
-from services.llm_processor import process_text_with_llm
+from services.llm_processor_old import process_text_with_llm
 from googleapiclient.discovery import build
 
 # Load environment variables from .env file

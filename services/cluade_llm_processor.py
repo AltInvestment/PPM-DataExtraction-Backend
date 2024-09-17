@@ -3,7 +3,6 @@ import re
 import logging
 import colorlog
 import json
-from pdfminer.high_level import extract_text
 from dotenv import load_dotenv
 
 
@@ -312,7 +311,7 @@ Example JSON:
         response = client.messages.create(
             model="claude-3-5-sonnet-20240620",
             system="You are an helpfull assistant tasked to extract relevent data from the provided instruction and generate the final response in JSON format as defined in the user prompt.",
-            messages=messages,
+            messages=messages,  # type: ignore
             max_tokens=8192,
         )
         processed_data = response.content

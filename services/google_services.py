@@ -1,15 +1,9 @@
 import os
-import logging
 from google.oauth2 import service_account
 from googleapiclient.errors import HttpError
 import io
 from googleapiclient.http import MediaIoBaseDownload
-from pdfminer.high_level import extract_text
 from utils.logger import logger
-
-# Suppress pdfminer logging
-logging.getLogger("pdfminer").setLevel(logging.WARNING)
-
 
 def load_service_account_credentials(service_account_file, scopes):
     try:

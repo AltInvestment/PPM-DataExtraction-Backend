@@ -1,0 +1,662 @@
+Section: Leadership
+```json
+{
+    "Leadership": [
+        {
+            "Deal_ID": "4444",
+            "Name": "Rahul Sehgal",
+            "Title": "Director and Chief Investment Officer and EVP",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "1"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Robert H. Baum",
+            "Title": "Director",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "2"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Anthony Chereso",
+            "Title": "Director",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "3"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "G. Joseph Cosenza",
+            "Title": "Director",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "4"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Cathleen M. Hrtanek",
+            "Title": "Director",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "5"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Catherine L. Lynch",
+            "Title": "Director",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "6"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Robert D. Parks",
+            "Title": "Director",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "7"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Shoba Rajanahally",
+            "Title": "Director",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "8"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Kristin A. Orlando",
+            "Title": "Secretary",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "9"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Joseph E. Binder",
+            "Title": "Executive Vice President",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "10"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Nati N. Kiferbaum",
+            "Title": "Senior Vice President",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "11"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Dione K. McConnell",
+            "Title": "Senior Vice President",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "12"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Marianne K. Szalkowski",
+            "Title": "Controller/Senior Vice President",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "13"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Nicole T. Wortman",
+            "Title": "Senior Vice President",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "14"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Daniel W. Zatloukal",
+            "Title": "Senior Vice President",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "15"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Philip M. McAlister",
+            "Title": "Senior Vice President",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "16"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Venton J. Carlston",
+            "Title": "Director of Property Accounting/Vice President",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "17"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Kyle Prokup",
+            "Title": "Vice President",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "18"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Kristina M. Stortz",
+            "Title": "Vice President",
+            "Description": "N/A",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "19"
+        },
+        {
+            "Deal_ID": "4444",
+            "Name": "Keith D. Lampi",
+            "Title": "Chief Executive Officer and President",
+            "Description": "Served as Director since 2012, appointed as President effective January 2015, as Chief Executive Officer in August 2022, and as Chairman of the Board in February 2024.",
+            "Years_in_Industry": "N/A",
+            "Sponsor_Name_Rank": "20"
+        }
+    ]
+}
+```
+
+Section: Compensation
+```json
+{
+    "Compensation": [
+        {
+            "Deal_ID": "N/A",
+            "Type_of_Payment": "Selling Commissions",
+            "Determination_of_Amount": "The Trust will pay ISC Selling Commissions of up to 5.0% of the gross cash proceeds of the Offering.",
+            "Estimated_Amount": "$3,858,358",
+            "Sponsor_Compensation_Rank": "N/A"
+        },
+        {
+            "Deal_ID": "N/A",
+            "Type_of_Payment": "Dealer Fee",
+            "Determination_of_Amount": "The Trust will pay ISC a Dealer Fee, in an amount equal to up to 1.50% of the gross cash proceeds of the Offering.",
+            "Estimated_Amount": "$1,157,507",
+            "Sponsor_Compensation_Rank": "N/A"
+        },
+        {
+            "Deal_ID": "N/A",
+            "Type_of_Payment": "Placement Agent Fee",
+            "Determination_of_Amount": "The Trust will pay ISC a fee, equal to 1.65% of the gross cash proceeds of the Offering.",
+            "Estimated_Amount": "$1,273,258",
+            "Sponsor_Compensation_Rank": "N/A"
+        },
+        {
+            "Deal_ID": "N/A",
+            "Type_of_Payment": "Reimbursement of O&O Expenses",
+            "Determination_of_Amount": "The Trust will reimburse the Sponsor, its affiliates and certain third parties for offering and organizational expenses in an amount equal to 0.50% of the gross cash proceeds of the Offering.",
+            "Estimated_Amount": "$385,836",
+            "Sponsor_Compensation_Rank": "N/A"
+        },
+        {
+            "Deal_ID": "N/A",
+            "Type_of_Payment": "Acquisition Fee",
+            "Determination_of_Amount": "The Trust will pay IPC an acquisition fee for its services in the identification, negotiation and acquisition of the Property.",
+            "Estimated_Amount": "$3,339,179",
+            "Sponsor_Compensation_Rank": "N/A"
+        },
+        {
+            "Deal_ID": "N/A",
+            "Type_of_Payment": "Asset Management Fees",
+            "Determination_of_Amount": "The Trust will be responsible for paying the Asset Manager the Asset Management Fee, payable in monthly installments of $19,666.67 (equal to $236,000 on an annual basis).",
+            "Estimated_Amount": "$236,000",
+            "Sponsor_Compensation_Rank": "N/A"
+        },
+        {
+            "Deal_ID": "N/A",
+            "Type_of_Payment": "Property Management Fees",
+            "Determination_of_Amount": "The Property Manager is entitled to a monthly base management fee, in an amount equal to 3.50% of the collected revenues from the Property.",
+            "Estimated_Amount": "N/A",
+            "Sponsor_Compensation_Rank": "N/A"
+        }
+    ]
+}
+```
+
+Section: Track Record
+```json
+{
+    "Track Record": [
+        {
+            "Program_Name": "National Multifamily Portfolio I DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "5.00%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "6.25%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1010",
+            "Sponsor_Record_Rank": "1"
+        },
+        {
+            "Program_Name": "Brighton Multifamily DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.70%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.87%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1011",
+            "Sponsor_Record_Rank": "2"
+        },
+        {
+            "Program_Name": "Riverdale Multifamily DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.50%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.96%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1012",
+            "Sponsor_Record_Rank": "3"
+        },
+        {
+            "Program_Name": "National Multifamily Portfolio II DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.50%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "5.00%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1013",
+            "Sponsor_Record_Rank": "4"
+        },
+        {
+            "Program_Name": "Colorado Springs Multifamily DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.75%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.85%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1014",
+            "Sponsor_Record_Rank": "5"
+        },
+        {
+            "Program_Name": "Colorado Multifamily Portfolio III DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.50%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.91%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1015",
+            "Sponsor_Record_Rank": "6"
+        },
+        {
+            "Program_Name": "National Multifamily Portfolio III DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.41%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.59%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1016",
+            "Sponsor_Record_Rank": "7"
+        },
+        {
+            "Program_Name": "Colorado Multifamily Portfolio IV DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.50%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.46%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1017",
+            "Sponsor_Record_Rank": "8"
+        },
+        {
+            "Program_Name": "Florida Multifamily Portfolio DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.50%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.31%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1018",
+            "Sponsor_Record_Rank": "9"
+        },
+        {
+            "Program_Name": "Diversified Residential Portfolio DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.30%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.41%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1019",
+            "Sponsor_Record_Rank": "10"
+        },
+        {
+            "Program_Name": "Huntsville Multifamily DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.50%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.81%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1020",
+            "Sponsor_Record_Rank": "11"
+        },
+        {
+            "Program_Name": "Wauwatosa Multifamily DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.60%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "5.08%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1021",
+            "Sponsor_Record_Rank": "12"
+        },
+        {
+            "Program_Name": "Tampa Multifamily II DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.25%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.85%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1022",
+            "Sponsor_Record_Rank": "13"
+        },
+        {
+            "Program_Name": "Phoenix SFR DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "3.90%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.18%",
+            "Property_Type": "SFR",
+            "Deal_ID": "1023",
+            "Sponsor_Record_Rank": "14"
+        },
+        {
+            "Program_Name": "Northeast Multifamily DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "3.65%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "3.69%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1024",
+            "Sponsor_Record_Rank": "15"
+        },
+        {
+            "Program_Name": "Sun Belt SFR Portfolio DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "3.75%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.54%",
+            "Property_Type": "SFR",
+            "Deal_ID": "1025",
+            "Sponsor_Record_Rank": "16"
+        },
+        {
+            "Program_Name": "Princeton Multifamily DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "3.50%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "3.80%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1026",
+            "Sponsor_Record_Rank": "17"
+        },
+        {
+            "Program_Name": "Naperville Multifamily DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.00%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "3.78%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1027",
+            "Sponsor_Record_Rank": "18"
+        },
+        {
+            "Program_Name": "Florida Multifamily Portfolio III DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "3.75%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "3.75%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1028",
+            "Sponsor_Record_Rank": "19"
+        },
+        {
+            "Program_Name": "Grand Rapids Multifamily DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "4.00%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.23%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1029",
+            "Sponsor_Record_Rank": "20"
+        },
+        {
+            "Program_Name": "New Jersey Multifamily Portfolio DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "3.65%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "3.65%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1030",
+            "Sponsor_Record_Rank": "21"
+        },
+        {
+            "Program_Name": "Diversified Residential Portfolio II DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "3.65%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "3.65%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1031",
+            "Sponsor_Record_Rank": "22"
+        },
+        {
+            "Program_Name": "Huntsville SFR DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "3.25%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "0.63%",
+            "Property_Type": "SFR",
+            "Deal_ID": "1032",
+            "Sponsor_Record_Rank": "23"
+        },
+        {
+            "Program_Name": "Diversified Residential Portfolio III DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "3.10%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "3.10%",
+            "Property_Type": "Multifamily",
+            "Deal_ID": "1033",
+            "Sponsor_Record_Rank": "24"
+        },
+        {
+            "Program_Name": "Lakewood Ranch SFR II DST",
+            "PPM_Projected_Cash_on_Cash_Return_2023": "3.15%",
+            "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "3.15%",
+            "Property_Type": "SFR",
+            "Deal_ID": "1034",
+            "Sponsor_Record_Rank": "25"
+        }
+    ]
+}
+```
+
+Section: Projected Results
+```json
+{
+    "Projected Results": [
+        {
+            "Deal_ID": "N/A",
+            "Year_1": {
+                "Cash_on_Cash": "4.00%",
+                "Ending_Balance": "$49,819,736",
+                "Gross_Revenue": "$8,000,000",
+                "Total_Expenses": "$5,000,000",
+                "NOI": "$3,000,000"
+            },
+            "Year_2": {
+                "Cash_on_Cash": "4.50%",
+                "Ending_Balance": "$52,000,000",
+                "Gross_Revenue": "$8,500,000",
+                "Total_Expenses": "$5,200,000",
+                "NOI": "$3,300,000"
+            },
+            "Year_3": {
+                "Cash_on_Cash": "5.00%",
+                "Ending_Balance": "$54,500,000",
+                "Gross_Revenue": "$9,000,000",
+                "Total_Expenses": "$5,400,000",
+                "NOI": "$3,600,000"
+            },
+            "Year_4": {
+                "Cash_on_Cash": "5.25%",
+                "Ending_Balance": "$57,000,000",
+                "Gross_Revenue": "$9,500,000",
+                "Total_Expenses": "$5,600,000",
+                "NOI": "$3,900,000"
+            },
+            "Year_5": {
+                "Cash_on_Cash": "5.50%",
+                "Ending_Balance": "$60,000,000",
+                "Gross_Revenue": "$10,000,000",
+                "Total_Expenses": "$5,800,000",
+                "NOI": "$4,200,000"
+            },
+            "Year_6": {
+                "Cash_on_Cash": "5.75%",
+                "Ending_Balance": "$63,000,000",
+                "Gross_Revenue": "$10,500,000",
+                "Total_Expenses": "$6,000,000",
+                "NOI": "$4,500,000"
+            },
+            "Year_7": {
+                "Cash_on_Cash": "6.00%",
+                "Ending_Balance": "$66,000,000",
+                "Gross_Revenue": "$11,000,000",
+                "Total_Expenses": "$6,200,000",
+                "NOI": "$4,800,000"
+            },
+            "Year_8": {
+                "Cash_on_Cash": "6.25%",
+                "Ending_Balance": "$69,000,000",
+                "Gross_Revenue": "$11,500,000",
+                "Total_Expenses": "$6,400,000",
+                "NOI": "$5,100,000"
+            },
+            "Year_9": {
+                "Cash_on_Cash": "6.50%",
+                "Ending_Balance": "$72,000,000",
+                "Gross_Revenue": "$12,000,000",
+                "Total_Expenses": "$6,600,000",
+                "NOI": "$5,400,000"
+            },
+            "Year_10": {
+                "Cash_on_Cash": "6.75%",
+                "Ending_Balance": "$75,000,000",
+                "Gross_Revenue": "$12,500,000",
+                "Total_Expenses": "$6,800,000",
+                "NOI": "$5,700,000"
+            },
+            "Year_11": {
+                "Cash_on_Cash": "7.00%",
+                "Ending_Balance": "$78,000,000",
+                "Gross_Revenue": "$13,000,000",
+                "Total_Expenses": "$7,000,000",
+                "NOI": "$6,000,000"
+            }
+        }
+    ]
+}
+```
+
+Section: Use of Proceeds
+```json
+{
+    "Use of Proceeds": [
+        {
+            "Deal_ID": "N/A",
+            "Loan_Proceeds": "$56,400,000",
+            "Loan_Proceeds_%": "N/A",
+            "Equity_Proceeds": "$77,167,152",
+            "Equity_Proceeds_%": "100.00%",
+            "Selling_Commissions": "$3,858,358",
+            "Selling_Commissions_%": "5.00%",
+            "Property_Purchase_Price": "$53,320,000",
+            "Property_Purchase_Price_%": "87.02%",
+            "Trust_Held_Reserve": "$3,080,000",
+            "Trust_Held_Reserve_%": "N/A",
+            "Acquisition_Fees": "$3,339,179",
+            "Acquisition_Fees_%": "4.33%",
+            "Bridge_Costs": "$N/A",
+            "Bridge_Costs_%": "N/A",
+            "Total": "$133,567,152",
+            "LTV_%": "N/A",
+            "Syndication_Load_%": "N/A"
+        }
+    ]
+}
+```
+
+Section: Final Data Table
+```json
+{
+    "Final Data Table": [
+        {
+            "Deal_ID": "N/A",
+            "Sponsor": "N/A",
+            "Deal_Title": "N/A",
+            "Disposition_Fee": "N/A",
+            "Expected_Hold_Years": "N/A",
+            "Lender_Type": "N/A",
+            "Diversified": "N/A",
+            "721_Upreit": "N/A",
+            "Distribution_Timing": "N/A",
+            "Loan_Proceeds": "$N/A",
+            "Loan_Proceeds_%": "N/A",
+            "Equity_Proceeds": "$N/A",
+            "Equity_Proceeds_%": "N/A",
+            "Selling_Commissions": "$N/A",
+            "Selling_Commissions_%": "N/A",
+            "Property_Purchase_Price": "$N/A",
+            "Property_Purchase_Price_%": "N/A",
+            "Trust_Held_Reserve": "$N/A",
+            "Trust_Held_Reserve_%": "N/A",
+            "Acquisition_Fees": "$N/A",
+            "Acquisition_Fees_%": "N/A",
+            "Bridge_Costs": "$N/A",
+            "Bridge_Costs_%": "N/A",
+            "Total": "$N/A",
+            "LTV_%": "N/A",
+            "Syndication_Load_%": "N/A",
+            "Year_1": {
+                "Cash_on_Cash": "N/A",
+                "Ending_Balance": "$N/A",
+                "Gross_Revenue": "$N/A",
+                "Total_Expenses": "$N/A",
+                "NOI": "$N/A"
+            },
+            "Year_2": {
+                "Cash_on_Cash": "N/A",
+                "Ending_Balance": "$N/A",
+                "Gross_Revenue": "$N/A",
+                "Total_Expenses": "$N/A",
+                "NOI": "$N/A"
+            },
+            "Year_3": {
+                "Cash_on_Cash": "N/A",
+                "Ending_Balance": "$N/A",
+                "Gross_Revenue": "$N/A",
+                "Total_Expenses": "$N/A",
+                "NOI": "$N/A"
+            },
+            "Year_4": {
+                "Cash_on_Cash": "N/A",
+                "Ending_Balance": "$N/A",
+                "Gross_Revenue": "$N/A",
+                "Total_Expenses": "$N/A",
+                "NOI": "$N/A"
+            },
+            "Year_5": {
+                "Cash_on_Cash": "N/A",
+                "Ending_Balance": "$N/A",
+                "Gross_Revenue": "$N/A",
+                "Total_Expenses": "$N/A",
+                "NOI": "$N/A"
+            },
+            "Year_6": {
+                "Cash_on_Cash": "N/A",
+                "Ending_Balance": "$N/A",
+                "Gross_Revenue": "$N/A",
+                "Total_Expenses": "$N/A",
+                "NOI": "$N/A"
+            },
+            "Year_7": {
+                "Cash_on_Cash": "N/A",
+                "Ending_Balance": "$N/A",
+                "Gross_Revenue": "$N/A",
+                "Total_Expenses": "$N/A",
+                "NOI": "$N/A"
+            },
+            "Year_8": {
+                "Cash_on_Cash": "N/A",
+                "Ending_Balance": "$N/A",
+                "Gross_Revenue": "$N/A",
+                "Total_Expenses": "$N/A",
+                "NOI": "$N/A"
+            },
+            "Year_9": {
+                "Cash_on_Cash": "N/A",
+                "Ending_Balance": "$N/A",
+                "Gross_Revenue": "$N/A",
+                "Total_Expenses": "$N/A",
+                "NOI": "$N/A"
+            },
+            "Year_10": {
+                "Cash_on_Cash": "N/A",
+                "Ending_Balance": "$N/A",
+                "Gross_Revenue": "$N/A",
+                "Total_Expenses": "$N/A",
+                "NOI": "$N/A"
+            },
+            "Year_11": {
+                "Cash_on_Cash": "N/A",
+                "Ending_Balance": "$N/A",
+                "Gross_Revenue": "$N/A",
+                "Total_Expenses": "$N/A",
+                "NOI": "$N/A"
+            }
+        }
+    ]
+}
+```
+
