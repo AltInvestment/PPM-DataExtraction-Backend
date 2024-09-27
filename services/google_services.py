@@ -5,6 +5,7 @@ import io
 from googleapiclient.http import MediaIoBaseDownload
 from utils.logger import logger
 
+
 def load_service_account_credentials(service_account_file, scopes):
     try:
         credentials = service_account.Credentials.from_service_account_file(
@@ -42,17 +43,6 @@ def download_pdf_from_drive(drive_service, file_id, file_name):
         logger.error(f"Unexpected error: {e}")
 
 
-def extract_text_from_pdf(file_path):
-    try:
-        logger.info(f"Extracting text from {file_path}...")
-        # Extract text from the first few lines of the PDF
-        text = extract_text(file_path)
-        return text
-    except Exception as e:
-        logger.error(f"Failed to extract text from {file_path}: {e}")
-        return ""
-
-
 def list_files_in_drive(drive_service, folder_id):
     file_data = []
     try:
@@ -60,7 +50,7 @@ def list_files_in_drive(drive_service, folder_id):
             drive_service.files()
             .list(
                 q=f"'{folder_id}' in parents",
-                pageSize=10,
+                pageSize=1000,  # Increase pageSize if needed
                 fields="files(id, name, mimeType)",
             )
             .execute()
@@ -70,7 +60,7 @@ def list_files_in_drive(drive_service, folder_id):
         if not files:
             logger.info("No files found in the specified folder.")
         else:
-            logger.info("Files found:")
+            logger.info(f"Found {len(files)} files in the folder.")
             for file in files:
                 logger.info(f'{file["name"]} ({file["id"]})')
 
@@ -81,15 +71,14 @@ def list_files_in_drive(drive_service, folder_id):
                         drive_service, file["id"], file["name"]
                     )
                     if file_path:
-                        extracted_text = extract_text_from_pdf(file_path)
-                        file_data.append([file["name"], extracted_text])
+                        # Return file ID, name, and path
+                        file_data.append((file["id"], file["name"], file_path))
     except HttpError as error:
         logger.error(f"An error occurred while listing files in Drive: {error}")
     except Exception as e:
         logger.error(f"Unexpected error: {e}")
 
     return file_data
-
 
 def append_to_google_sheets(sheets_service, spreadsheet_id, range_name, values):
     try:
