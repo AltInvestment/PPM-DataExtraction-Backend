@@ -103,6 +103,14 @@ def extract_data_from_pdf(pdf_file_path, deal_id):
         - For years of experience, ensure it is explicitly mentioned; otherwise, mark it as `"N/A"`.
         - Follow the structure and format exactly as provided.
 
+        **Context for Each Feild**:
+        - Deal_ID: A unique identifier assigned to each investment deal.
+        - Name: The name of the individual in a leadership role.
+        - Title: The professional title of the individual within the organization.
+        - Description: A brief professional summary or biography of the individual. It describes the individual's background and expertise.
+        - Years_in_Industry: The number of years the individual has worked in the industry.
+        - Sponsor_Name_Rank: This ranks the leadership individual within the sponsor's hierarchy or organization.
+
         **Structured Output**:
         ```json
         {
