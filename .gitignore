@@ -147,3 +147,4 @@ tmp/
 *.pdf
 
 /chroma_persist/
+credentials.json

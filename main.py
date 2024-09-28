@@ -107,7 +107,7 @@ def process_file(file_name, file_path, sheets_service, SPREADSHEET_ID, sheet_hea
                                 if value and value != "N/A":
                                     final_item[key] = value
                                 else:
-                                    # Retain existing value
+                                    final_item[key] = "N/A"
                                     pass
                     else:
                         # No matching Deal_ID in Use of Proceeds
@@ -122,7 +122,81 @@ def process_file(file_name, file_path, sheets_service, SPREADSHEET_ID, sheet_hea
         # -------------------------------
         # End of merging
         # -------------------------------
+        # -------------------------------
+        # Merge Projected Results into Final Data Table
+        # -------------------------------
+        if (
+            "Final Data Table" in extracted_columns
+            and "Projected Results" in extracted_columns
+        ):
+            # Clean and parse the data
+            final_data_table_data = clean_extracted_data(
+                extracted_columns["Final Data Table"]
+            )
+            projected_results_data = clean_extracted_data(
+                extracted_columns["Projected Results"]
+            )
 
+            try:
+                final_data_table_json = json.loads(final_data_table_data)
+                projected_results_json = json.loads(projected_results_data)
+            except json.JSONDecodeError as e:
+                logger.error(f"Failed to decode JSON data: {e}")
+                # Proceed without merging
+            else:
+                # Assuming there is only one item per Deal_ID
+                final_data_items = final_data_table_json.get("Final Data Table", [])
+                projected_results_items = projected_results_json.get(
+                    "Projected Results", []
+                )
+
+                # Build a mapping from Deal_ID to Projected Results data
+                projected_results_mapping = {
+                    item.get("Deal_ID", "N/A"): item for item in projected_results_items
+                }
+
+                # Update Final Data Table items with data from Projected Results
+                for final_item in final_data_items:
+                    final_deal_id = final_item.get("Deal_ID", "N/A")
+                    projected_item = projected_results_mapping.get(final_deal_id)
+                    if projected_item:
+                        # Update 'Year_N' data from Projected Results
+                        for key, value in projected_item.items():
+                            if key.startswith("Year_"):
+                                # Merge Year_N data
+                                if key in final_item:
+                                    # If Year_N already exists in final_item, update its fields
+                                    final_year_data = final_item[key]
+                                    projected_year_data = value
+                                    if isinstance(final_year_data, dict) and isinstance(
+                                        projected_year_data, dict
+                                    ):
+                                        final_year_data.update(projected_year_data)
+                                    else:
+                                        final_item[key] = projected_year_data
+                                else:
+                                    # Add the Year_N data
+                                    final_item[key] = value
+                            elif key != "Deal_ID":
+                                # Other keys, merge as needed
+                                if value and value != "N/A":
+                                    final_item[key] = value
+                                else:
+                                    final_item[key] = "N/A"
+                                    pass
+                    else:
+                        # No matching Deal_ID in Projected Results
+                        pass
+
+                # Update the Final Data Table data
+                final_data_table_json["Final Data Table"] = final_data_items
+                # Update extracted_columns with the updated Final Data Table
+                extracted_columns["Final Data Table"] = json.dumps(
+                    final_data_table_json
+                )
+        # -------------------------------
+        # End of merging
+        # -------------------------------
         # Append the processed data to the respective Google Sheets
         for sheet_name, data in extracted_columns.items():
             logger.info(f"Processing section: {sheet_name}")
@@ -195,7 +269,6 @@ def process_file(file_name, file_path, sheets_service, SPREADSHEET_ID, sheet_hea
 
                     elif sheet_name == "Final Data Table":
                         # Processing Final Data Table
-                        # Generate headers dynamically
                         base_headers = [
                             "Deal_ID",
                             "Sponsor",
@@ -221,8 +294,6 @@ def process_file(file_name, file_path, sheets_service, SPREADSHEET_ID, sheet_hea
                             "Bridge_Costs",
                             "Bridge_Costs_%",
                             "Total",
-                            "LTV_%",
-                            "Syndication_Load_%",
                         ]
                         years = []
                         for item in data_items:
@@ -274,8 +345,6 @@ def process_file(file_name, file_path, sheets_service, SPREADSHEET_ID, sheet_hea
                                 item.get("Bridge_Costs", "N/A"),
                                 item.get("Bridge_Costs_%", "N/A"),
                                 item.get("Total", "N/A"),
-                                item.get("LTV_%", "N/A"),
-                                item.get("Syndication_Load_%", "N/A"),
                             ]
                             for year in years:
                                 year_data = item.get(year, {})
@@ -437,8 +506,6 @@ def main():
                 "Bridge_Costs",
                 "Bridge_Costs_%",
                 "Total",
-                "LTV_%",
-                "Syndication_Load_%",
             ],
             # We'll generate headers for "Projected Results" and "Final Data Table" dynamically
         }
