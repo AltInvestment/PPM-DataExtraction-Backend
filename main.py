@@ -279,6 +279,8 @@ def process_file(file_name, file_path, sheets_service, SPREADSHEET_ID, sheet_hea
                             "Diversified",
                             "721_Upreit",
                             "Distribution_Timing",
+                            "Gross_Proceeds",
+                            "Gross_Proceeds_%",
                             "Loan_Proceeds",
                             "Loan_Proceeds_%",
                             "Equity_Proceeds",
@@ -293,7 +295,6 @@ def process_file(file_name, file_path, sheets_service, SPREADSHEET_ID, sheet_hea
                             "Acquisition_Fees_%",
                             "Bridge_Costs",
                             "Bridge_Costs_%",
-                            "Total",
                         ]
                         years = []
                         for item in data_items:
@@ -324,27 +325,41 @@ def process_file(file_name, file_path, sheets_service, SPREADSHEET_ID, sheet_hea
                                 item.get("Deal_ID", "N/A"),
                                 item.get("Sponsor", "N/A"),
                                 item.get("Deal_Title", "N/A"),
+                                item.get("Website_Link", "N/A"),
+                                item.get("Date_Founded", "N/A"),
                                 item.get("Disposition_Fee", "N/A"),
                                 item.get("Expected_Hold_Years", "N/A"),
+                                item.get("Zero_Coupon", "N/A"),
                                 item.get("Lender_Type", "N/A"),
                                 item.get("Diversified", "N/A"),
                                 item.get("721_Upreit", "N/A"),
                                 item.get("Distribution_Timing", "N/A"),
+                                item.get("Gross_Proceeds", "N/A"),
+                                item.get("Gross_Proceeds_%", "N/A"),
                                 item.get("Loan_Proceeds", "N/A"),
                                 item.get("Loan_Proceeds_%", "N/A"),
                                 item.get("Equity_Proceeds", "N/A"),
                                 item.get("Equity_Proceeds_%", "N/A"),
-                                item.get("Selling_Commissions", "N/A"),
-                                item.get("Selling_Commissions_%", "N/A"),
                                 item.get("Property_Purchase_Price", "N/A"),
                                 item.get("Property_Purchase_Price_%", "N/A"),
+                                item.get("Total_Syndication_Load", "N/A"),
+                                item.get("Total_Syndication_Load_%", "N/A"),
+                                item.get("Selling_Commissions", "N/A"),
+                                item.get("Selling_Commissions_%", "N/A"),
                                 item.get("Trust_Held_Reserve", "N/A"),
                                 item.get("Trust_Held_Reserve_%", "N/A"),
                                 item.get("Acquisition_Fees", "N/A"),
                                 item.get("Acquisition_Fees_%", "N/A"),
                                 item.get("Bridge_Costs", "N/A"),
                                 item.get("Bridge_Costs_%", "N/A"),
-                                item.get("Total", "N/A"),
+                                item.get("Other_Fees", "N/A"),
+                                item.get("Other_Fees_%", "N/A"),
+                                item.get("GS_Property_Number", "N/A"),
+                                item.get("GS_Location", "N/A"),
+                                item.get("GS_Zip_Code_Grade", "N/A"),
+                                item.get("GS_Supply_Barriers", "N/A"),
+                                item.get("GS_Business_Friendliness", "N/A"),
+                                item.get("Market_Description", "N/A"),
                             ]
                             for year in years:
                                 year_data = item.get(year, {})
@@ -506,6 +521,8 @@ def main():
                 "Bridge_Costs",
                 "Bridge_Costs_%",
                 "Total",
+                "LTV_%",
+                "Syndication_Load_%",
             ],
             # We'll generate headers for "Projected Results" and "Final Data Table" dynamically
         }
@@ -539,8 +556,6 @@ def main():
             # Save the processed file IDs to a file
             save_processed_file_ids("processed_files.txt", processed_file_ids)
 
-            # Sleep for 60 seconds before checking again
-            time.sleep(60)
     except Exception as e:
         logger.critical(f"An unexpected error occurred in the main function: {e}")
 

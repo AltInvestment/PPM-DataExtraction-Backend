@@ -2,112 +2,72 @@
 {
   "Leadership": [
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Name": "Keith D. Lampi",
       "Title": "Chairman, Chief Executive Officer and President",
-      "Description": "Mr. Lampi has served as Director since 2012, and was appointed as President effective January 2015, as Chief Executive Officer in August 2022, and as Chairman of the Board in February 2024.",
-      "Years_in_Industry": "20+",
+      "Description": "Responsible for the execution of IREIC's long-term business strategy.",
+      "Years_in_Industry": "20",
       "Sponsor_Name_Rank": "1"
     },
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Name": "Rahul Sehgal",
-      "Title": "Chief Investment Officer and Executive Vice President",
-      "Description": "Mr. Sehgal oversees IPC’s investment strategies, including acquisitions, dispositions, refinancing, tenant negotiations, and portfolio review.",
+      "Title": "Chief Investment Officer",
+      "Description": "Oversees IPC's investment strategies, including acquisitions and dispositions.",
       "Years_in_Industry": "20",
       "Sponsor_Name_Rank": "2"
     },
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Name": "Robert H. Baum",
       "Title": "Director",
-      "Description": "Mr. Baum is Executive Vice President and General Counsel of The Inland Real Estate Group, LLC.",
-      "Years_in_Industry": "50+",
+      "Description": "General Counsel responsible for supervising legal activities.",
+      "Years_in_Industry": "40",
       "Sponsor_Name_Rank": "3"
     },
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Name": "Anthony Chereso",
-      "Title": "Director and Chief Executive Officer",
-      "Description": "Mr. Chereso serves as Chief Executive Officer and President of The Inland Real Estate Group, LLC.",
+      "Title": "Director and Chief Executive Officer of The Inland Real Estate Group, LLC",
+      "Description": "Leads the company’s strategy and innovation.",
       "Years_in_Industry": "30",
       "Sponsor_Name_Rank": "4"
     },
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Name": "G. Joseph Cosenza",
       "Title": "Director",
-      "Description": "Mr. Cosenza is a Vice Chairman and one of the original principals of The Inland Real Estate Group, LLC.",
-      "Years_in_Industry": "50+",
+      "Description": "Supervises property acquisitions and due diligence.",
+      "Years_in_Industry": "50",
       "Sponsor_Name_Rank": "5"
-    },
-    {
-      "Deal_ID": "Epoch Student Housing DST",
-      "Name": "Cathleen M. Hrtanek",
-      "Title": "Director",
-      "Description": "Ms. Hrtanek is an Associate General Counsel and Senior Vice President of The Inland Real Estate Group, LLC.",
-      "Years_in_Industry": "20+",
-      "Sponsor_Name_Rank": "6"
-    },
-    {
-      "Deal_ID": "Epoch Student Housing DST",
-      "Name": "Catherine L. Lynch",
-      "Title": "Director",
-      "Description": "Ms. Lynch is the Treasurer and Secretary of The Inland Real Estate Group, LLC.",
-      "Years_in_Industry": "30",
-      "Sponsor_Name_Rank": "7"
-    },
-    {
-      "Deal_ID": "Epoch Student Housing DST",
-      "Name": "Robert D. Parks",
-      "Title": "Director",
-      "Description": "Mr. Parks has been a principal of the Inland real estate organization since May 1968.",
-      "Years_in_Industry": "50+",
-      "Sponsor_Name_Rank": "8"
-    },
-    {
-      "Deal_ID": "Epoch Student Housing DST",
-      "Name": "Shoba Rajanahally",
-      "Title": "Director",
-      "Description": "Ms. Rajanahally is the Executive Vice President/Chief Risk Officer for The Inland Real Estate Group, LLC.",
-      "Years_in_Industry": "25",
-      "Sponsor_Name_Rank": "9"
-    },
-    {
-      "Deal_ID": "Epoch Student Housing DST",
-      "Name": "Joseph E. Binder",
-      "Title": "Executive Vice President of Acquisition Structure and Finance",
-      "Description": "Mr. Binder oversees IPC’s acquisition and structuring process, including underwriting and financing.",
-      "Years_in_Industry": "20",
-      "Sponsor_Name_Rank": "10"
     }
   ],
   "Compensation": [
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Type_of_Payment": "Selling Commissions",
       "Determination_of_Amount": "The Trust will pay ISC Selling Commissions of up to 5.0% of the gross cash proceeds.",
       "Estimated_Amount": "$3,858,358",
       "Sponsor_Compensation_Rank": "1"
     },
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Type_of_Payment": "Dealer Fee",
-      "Determination_of_Amount": "The Trust will pay ISC a Dealer Fee equal to up to 1.50% of the gross cash proceeds for coordinating the marketing of the Interests.",
+      "Determination_of_Amount": "The Trust will pay ISC a Dealer Fee equal to up to 1.50% of the gross cash proceeds.",
       "Estimated_Amount": "$1,157,507",
       "Sponsor_Compensation_Rank": "2"
     },
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Type_of_Payment": "Placement Agent Fee",
-      "Determination_of_Amount": "The Trust will pay ISC a fee equal to 1.65% of the gross cash proceeds for serving as the Placement Agent.",
+      "Determination_of_Amount": "The Trust will pay ISC a fee equal to 1.65% of the gross cash proceeds.",
       "Estimated_Amount": "$1,273,258",
       "Sponsor_Compensation_Rank": "3"
     },
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Type_of_Payment": "O&O Expenses",
-      "Determination_of_Amount": "The Trust will reimburse the Sponsor, its affiliates and certain third parties for offering and organizational expenses in an amount equal to 0.50% of the gross cash proceeds.",
+      "Determination_of_Amount": "The Trust will reimburse the Sponsor for offering and organizational expenses equal to 0.50% of the gross cash proceeds.",
       "Estimated_Amount": "$385,836",
       "Sponsor_Compensation_Rank": "4"
     }
@@ -115,113 +75,94 @@
   "Track Record": [
     {
       "Program_Name": "National Multifamily Portfolio I DST",
-      "PPM_Projected_Cash_on_Cash_Return_2023": "10.11%",
+      "PPM_Projected_Cash_on_Cash_Return_2023": "5.00%",
       "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "6.25%",
       "Property_Type": "Multifamily",
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Sponsor_Record_Rank": "1"
+    },
+    {
+      "Program_Name": "Orlando Student Housing DST",
+      "PPM_Projected_Cash_on_Cash_Return_2023": "4.50%",
+      "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.50%",
+      "Property_Type": "Student Housing",
+      "Deal_ID": "4444",
+      "Sponsor_Record_Rank": "2"
+    },
+    {
+      "Program_Name": "Charlotte Student Housing DST",
+      "PPM_Projected_Cash_on_Cash_Return_2023": "4.05%",
+      "Avg_Cash_on_Cash_Return_from_Inception_through_12/31/2023": "4.30%",
+      "Property_Type": "Student Housing",
+      "Deal_ID": "4444",
+      "Sponsor_Record_Rank": "3"
     }
   ],
   "Projected Results": [
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Year_1": {
         "Cash_on_Cash": "4.25%",
-        "Ending_Balance": "$2,732,983",
+        "Ending_Balance": "$4,340,932",
         "Gross_Revenue": "$10,094,555",
-        "Total_Expenses": "$5,733,627",
+        "Total_Expenses": "$3,361,928",
         "NOI": "$5,733,627"
       },
       "Year_2": {
         "Cash_on_Cash": "4.25%",
-        "Ending_Balance": "$3,279,604",
+        "Ending_Balance": "$4,595,873",
         "Gross_Revenue": "$12,640,962",
-        "Total_Expenses": "$7,280,088",
+        "Total_Expenses": "$3,360,820",
         "NOI": "$7,280,088"
       },
       "Year_3": {
         "Cash_on_Cash": "4.25%",
-        "Ending_Balance": "$3,279,604",
+        "Ending_Balance": "$4,859,506",
         "Gross_Revenue": "$13,094,089",
-        "Total_Expenses": "$7,588,664",
+        "Total_Expenses": "$3,505,425",
         "NOI": "$7,588,664"
       },
       "Year_4": {
         "Cash_on_Cash": "4.40%",
-        "Ending_Balance": "$3,392,986",
+        "Ending_Balance": "$5,181,892",
         "Gross_Revenue": "$13,486,912",
-        "Total_Expenses": "$7,847,874",
+        "Total_Expenses": "$3,382,210",
         "NOI": "$7,847,874"
       },
       "Year_5": {
         "Cash_on_Cash": "4.69%",
-        "Ending_Balance": "$3,619,335",
+        "Ending_Balance": "$5,562,100",
         "Gross_Revenue": "$13,891,519",
-        "Total_Expenses": "$8,099,243",
+        "Total_Expenses": "$3,470,322",
         "NOI": "$8,099,243"
-      },
-      "Year_6": {
-        "Cash_on_Cash": "4.99%",
-        "Ending_Balance": "$3,852,106",
-        "Gross_Revenue": "$14,308,265",
-        "Total_Expenses": "$8,358,414",
-        "NOI": "$8,358,414"
-      },
-      "Year_7": {
-        "Cash_on_Cash": "5.30%",
-        "Ending_Balance": "$4,092,526",
-        "Gross_Revenue": "$14,737,513",
-        "Total_Expenses": "$8,625,619",
-        "NOI": "$8,625,619"
-      },
-      "Year_8": {
-        "Cash_on_Cash": "5.63%",
-        "Ending_Balance": "$4,340,932",
-        "Gross_Revenue": "$15,179,638",
-        "Total_Expenses": "$8,901,100",
-        "NOI": "$8,901,100"
-      },
-      "Year_9": {
-        "Cash_on_Cash": "5.96%",
-        "Ending_Balance": "$4,595,873",
-        "Gross_Revenue": "$15,635,028",
-        "Total_Expenses": "$9,185,102",
-        "NOI": "$9,185,102"
-      },
-      "Year_10": {
-        "Cash_on_Cash": "6.30%",
-        "Ending_Balance": "$4,859,506",
-        "Gross_Revenue": "$16,104,078",
-        "Total_Expenses": "$9,477,881",
-        "NOI": "$9,477,881"
       }
     }
   ],
   "Use of Proceeds": [
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Loan_Proceeds": "$56,400,000",
-      "Loan_Proceeds_%": "42.14%",
+      "Loan_Proceeds_%": "42.13%",
       "Equity_Proceeds": "$77,167,152",
-      "Equity_Proceeds_%": "57.86%",
+      "Equity_Proceeds_%": "57.87%",
       "Selling_Commissions": "$3,858,358",
       "Selling_Commissions_%": "5.00%",
       "Property_Purchase_Price": "$118,000,000",
-      "Property_Purchase_Price_%": "88.30%",
+      "Property_Purchase_Price_%": "87.31%",
       "Trust_Held_Reserve": "$2,580,000",
-      "Trust_Held_Reserve_%": "1.94%",
+      "Trust_Held_Reserve_%": "1.93%",
       "Acquisition_Fees": "$3,339,179",
-      "Acquisition_Fees_%": "4.70%",
-      "Bridge_Costs": "N/A",
-      "Bridge_Costs_%": "N/A",
+      "Acquisition_Fees_%": "2.53%",
+      "Bridge_Costs": "$0",
+      "Bridge_Costs_%": "0.00%",
       "Total": "$133,567,152",
-      "LTV_%": "42.14%",
-      "Syndication_Load_%": "5.00%"
+      "LTV_%": "42.13%",
+      "Syndication_Load_%": "11.00%"
     }
   ],
   "Final Data Table": [
     {
-      "Deal_ID": "Epoch Student Housing DST",
+      "Deal_ID": "4444",
       "Sponsor": "Inland Private Capital Corporation",
       "Deal_Title": "Epoch Student Housing DST",
       "Disposition_Fee": "N/A",
@@ -231,91 +172,56 @@
       "721_Upreit": "no",
       "Distribution_Timing": "Monthly",
       "Loan_Proceeds": "$56,400,000",
-      "Loan_Proceeds_%": "42.14%",
+      "Loan_Proceeds_%": "42.13%",
       "Equity_Proceeds": "$77,167,152",
-      "Equity_Proceeds_%": "57.86%",
+      "Equity_Proceeds_%": "57.87%",
       "Selling_Commissions": "$3,858,358",
       "Selling_Commissions_%": "5.00%",
       "Property_Purchase_Price": "$118,000,000",
-      "Property_Purchase_Price_%": "88.30%",
+      "Property_Purchase_Price_%": "87.31%",
       "Trust_Held_Reserve": "$2,580,000",
-      "Trust_Held_Reserve_%": "1.94%",
+      "Trust_Held_Reserve_%": "1.93%",
       "Acquisition_Fees": "$3,339,179",
-      "Acquisition_Fees_%": "4.70%",
-      "Bridge_Costs": "N/A",
-      "Bridge_Costs_%": "N/A",
+      "Acquisition_Fees_%": "2.53%",
+      "Bridge_Costs": "$0",
+      "Bridge_Costs_%": "0.00%",
       "Total": "$133,567,152",
-      "LTV_%": "42.14%",
-      "Syndication_Load_%": "5.00%",
+      "LTV_%": "42.13%",
+      "Syndication_Load_%": "11.00%",
       "Year_1": {
         "Cash_on_Cash": "4.25%",
-        "Ending_Balance": "$2,732,983",
+        "Ending_Balance": "$4,340,932",
         "Gross_Revenue": "$10,094,555",
-        "Total_Expenses": "$5,733,627",
+        "Total_Expenses": "$3,361,928",
         "NOI": "$5,733,627"
       },
       "Year_2": {
         "Cash_on_Cash": "4.25%",
-        "Ending_Balance": "$3,279,604",
+        "Ending_Balance": "$4,595,873",
         "Gross_Revenue": "$12,640,962",
-        "Total_Expenses": "$7,280,088",
+        "Total_Expenses": "$3,360,820",
         "NOI": "$7,280,088"
       },
       "Year_3": {
         "Cash_on_Cash": "4.25%",
-        "Ending_Balance": "$3,279,604",
+        "Ending_Balance": "$4,859,506",
         "Gross_Revenue": "$13,094,089",
-        "Total_Expenses": "$7,588,664",
+        "Total_Expenses": "$3,505,425",
         "NOI": "$7,588,664"
       },
       "Year_4": {
         "Cash_on_Cash": "4.40%",
-        "Ending_Balance": "$3,392,986",
+        "Ending_Balance": "$5,181,892",
         "Gross_Revenue": "$13,486,912",
-        "Total_Expenses": "$7,847,874",
+        "Total_Expenses": "$3,382,210",
         "NOI": "$7,847,874"
       },
       "Year_5": {
         "Cash_on_Cash": "4.69%",
-        "Ending_Balance": "$3,619,335",
+        "Ending_Balance": "$5,562,100",
         "Gross_Revenue": "$13,891,519",
-        "Total_Expenses": "$8,099,243",
+        "Total_Expenses": "$3,470,322",
         "NOI": "$8,099,243"
-      },
-      "Year_6": {
-        "Cash_on_Cash": "4.99%",
-        "Ending_Balance": "$3,852,106",
-        "Gross_Revenue": "$14,308,265",
-        "Total_Expenses": "$8,358,414",
-        "NOI": "$8,358,414"
-      },
-      "Year_7": {
-        "Cash_on_Cash": "5.30%",
-        "Ending_Balance": "$4,092,526",
-        "Gross_Revenue": "$14,737,513",
-        "Total_Expenses": "$8,625,619",
-        "NOI": "$8,625,619"
-      },
-      "Year_8": {
-        "Cash_on_Cash": "5.63%",
-        "Ending_Balance": "$4,340,932",
-        "Gross_Revenue": "$15,179,638",
-        "Total_Expenses": "$8,901,100",
-        "NOI": "$8,901,100"
-      },
-      "Year_9": {
-        "Cash_on_Cash": "5.96%",
-        "Ending_Balance": "$4,595,873",
-        "Gross_Revenue": "$15,635,028",
-        "Total_Expenses": "$9,185,102",
-        "NOI": "$9,185,102"
-      },
-      "Year_10": {
-        "Cash_on_Cash": "6.30%",
-        "Ending_Balance": "$4,859,506",
-        "Gross_Revenue": "$16,104,078",
-        "Total_Expenses": "$9,477,881",
-        "NOI": "$9,477,881"
       }
     }
   ]
