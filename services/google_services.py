@@ -80,6 +80,7 @@ def list_files_in_drive(drive_service, folder_id):
 
     return file_data
 
+
 def append_to_google_sheets(sheets_service, spreadsheet_id, range_name, values):
     try:
         body = {"values": values}
@@ -103,3 +104,54 @@ def append_to_google_sheets(sheets_service, spreadsheet_id, range_name, values):
         )
     except Exception as e:
         logger.error(f"Unexpected error: {e}")
+
+
+def delete_last_row(sheets_service, spreadsheet_id, sheet_name):
+    try:
+        # Get the properties of the sheet to find the sheet ID
+        sheet_metadata = sheets_service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
+        sheets = sheet_metadata.get('sheets', '')
+        sheet_id = None
+        for sheet in sheets:
+            if sheet.get("properties", {}).get("title", "") == sheet_name:
+                sheet_id = sheet.get("properties", {}).get("sheetId", 0)
+                break
+
+        if sheet_id is None:
+            logger.error("Sheet %s not found.", sheet_name)
+            return
+
+        # Get the number of rows in the sheet
+        sheet_info = sheets_service.spreadsheets().values().get(
+            spreadsheetId=spreadsheet_id,
+            range=sheet_name
+        ).execute()
+        num_rows = len(sheet_info.get('values', []))
+
+        if num_rows < 1:
+            logger.warning("Sheet %s is empty. No rows to delete.", sheet_name)
+            return
+
+        # Build the request to delete the last row
+        request_body = {
+            'requests': [
+                {
+                    'deleteDimension': {
+                        'range': {
+                            'sheetId': sheet_id,
+                            'dimension': 'ROWS',
+                            'startIndex': num_rows - 1,  # Zero-based index
+                            'endIndex': num_rows         # Exclude end index
+                        }
+                    }
+                }
+            ]
+        }
+
+        response = sheets_service.spreadsheets().batchUpdate(
+            spreadsheetId=spreadsheet_id,
+            body=request_body
+        ).execute()
+        logger.info("Deleted the last row in sheet %s.", sheet_name)
+    except Exception as e:
+        logger.error("An error occurred while deleting the last row: %s", e)
