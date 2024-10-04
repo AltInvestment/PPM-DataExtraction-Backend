@@ -399,16 +399,32 @@ def process_file(file_name, file_path, sheets_service, SPREADSHEET_ID, sheet_hea
                     elif sheet_name == "Leadership":
                         # Processing Leadership section
                         headers = sheet_headers.get(sheet_name, [])
+                        values = []
+
+                        # Check if data_items are present
+                        if not data_items:
+                            logger.warning(
+                                f"No data found for Leadership section in {file_name}"
+                            )
+                            continue
+
+                        logger.info(f"Leadership Data: {data_items}")
+
                         for item in data_items:
                             row = [item.get(header, "N/A") for header in headers]
                             values.append(row)
-                        # Append data to Google Sheets
-                        append_to_google_sheets(
-                            sheets_service,
-                            SPREADSHEET_ID,
-                            RANGE_NAME,
-                            values,
-                        )
+
+                        try:
+                            # Append data to Google Sheets
+                            append_to_google_sheets(
+                                sheets_service,
+                                SPREADSHEET_ID,
+                                RANGE_NAME,
+                                values,
+                            )
+                            logger.info(f"Appended Leadership data for {file_name}")
+                        except Exception as e:
+                            logger.error(f"Error appending Leadership data: {e}")
 
                     elif sheet_name == "Compensation":
                         # Processing Compensation section

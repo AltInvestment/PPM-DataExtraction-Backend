@@ -8,6 +8,8 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 from utils.logger import logger
+import fitz
+import pymupdf
 
 load_dotenv()
 
@@ -36,6 +38,98 @@ def process_pdf_file(pdf_path):
         return None
 
 
+def highlight_text_in_pdf(pdf_path, highlights, output_pdf_path):
+    import fitz  # PyMuPDF
+    from fuzzywuzzy import fuzz
+    import re
+    from unidecode import unidecode
+
+    def normalize_text(text):
+        text = re.sub(r"[\\/']", "", text)
+
+        text = unidecode(text)
+        text = text.encode('utf-8', 'ignore').decode('utf-8', 'ignore')
+        text = ''.join(c for c in text if c.isprintable())
+        text = re.sub(r'-\n', '', text)
+        text = re.sub(r'-\s+', '', text)
+        text = text.replace('\n', ' ')
+        text = re.sub(r'\s+', ' ', text)
+        text = re.sub(r'[^a-zA-Z0-9.,;:!?\'"()\- \n]', '', text)
+        text = text.strip()
+        return text.lower()
+
+        return text
+
+    doc = fitz.open(pdf_path)
+
+    for item in highlights:
+        page_number = item["page_number"]
+        text_to_highlight = normalize_text(item["text"])
+
+        if page_number < 0 or page_number >= len(doc):
+            continue
+
+        page = doc[page_number]
+
+        # Attempt to find exact instances
+        text_instances = page.search_for(text_to_highlight)
+
+        if not text_instances:
+            logger.info(
+                f"No exact match found on page {page_number}, attempting fuzzy matching."
+            )
+            # Implement fuzzy matching
+            words = page.get_text("words")
+            words_text = " ".join([w[4] for w in words])
+            words_text_normalized = normalize_text(words_text)
+
+            # Find the best match in the words_text
+            from difflib import SequenceMatcher
+
+            # Use SequenceMatcher to find the best matching block
+            matcher = SequenceMatcher(None, words_text_normalized, text_to_highlight)
+            match = matcher.find_longest_match(
+                0, len(words_text_normalized), 0, len(text_to_highlight)
+            )
+
+            if match.size > 0:
+                # Extract the matching substring
+                matching_substring = words_text_normalized[
+                    match.a : match.a + match.size
+                ]
+
+                # Now, find the start and end indices of the matching words
+                start_index = len(words_text_normalized[: match.a].split())
+                end_index = start_index + len(matching_substring.split())
+
+                # Get the bounding boxes of the matching words
+                matching_words = words[start_index:end_index]
+                rects = [fitz.Rect(w[:4]) for w in matching_words]
+
+                # Combine the rectangles into one if necessary
+                if rects:
+                    highlight_rect = rects[0]
+                    for r in rects[1:]:
+                        highlight_rect |= r  # Union of rectangles
+                    highlight = page.add_highlight_annot(highlight_rect)
+                    highlight.update()
+                    logger.info(
+                        f"Fuzzy matched and highlighted text on page {page_number}"
+                    )
+                else:
+                    logger.warning(f"No matching words found on page {page_number}")
+            else:
+                logger.warning(f"No fuzzy match found for text on page {page_number}")
+        else:
+            for inst in text_instances:
+                highlight = page.add_highlight_annot(inst)
+                highlight.update()
+            logger.info(f"Text highlighted on page {page_number}")
+
+    doc.save(output_pdf_path, garbage=4, deflate=True)
+    doc.close()
+
+
 def extract_data_from_pdf(pdf_file_path, deal_id):
     vector_store = process_pdf_file(pdf_file_path)
     if vector_store:
@@ -44,11 +138,11 @@ def extract_data_from_pdf(pdf_file_path, deal_id):
 
         loader = PyPDFLoader(pdf_file_path)
         documents = loader.load()
-        first_10_pages = documents[:20]
-        first_10_pages_text = "\n\n".join(
+        first_few_pages = documents[:20]
+        first_few_pages_text = "\n\n".join(
             [
                 doc.page_content.replace("{", "{{").replace("}", "}}")
-                for doc in first_10_pages
+                for doc in first_few_pages
             ]
         )
 
@@ -103,7 +197,7 @@ def extract_data_from_pdf(pdf_file_path, deal_id):
         ### Context:
         The following text comprises the first few pages of the PPM document, which will serve as the primary source for data extraction:
         ```
-        {first_10_pages_text}
+        {first_few_pages_text}
         ```
         #### Instruction:
         - Use the following as `Deal_ID`: {deal_id} or the one found in the above context.
@@ -452,6 +546,7 @@ def extract_data_from_pdf(pdf_file_path, deal_id):
 
         # Extract data for each section in a conversational manner
         extracted_data = {}
+        source_docs_per_section = {}
         for section, prompt_text in section_prompts.items():
             # Here we pass input as a dict as expected by the RAG chain
             input_dict = {
@@ -461,7 +556,18 @@ def extract_data_from_pdf(pdf_file_path, deal_id):
             response = rag_chain.invoke(input_dict)
             # Extract only the answer part
             extracted_data[section] = response.get("answer", "No relevant data found.")
+            source_docs_per_section[section] = response.get("context", [])
 
+        highlights = []
+        for section, docs in source_docs_per_section.items():
+            for doc in docs:
+                page_number = doc.metadata.get("page", 0)
+                text = doc.page_content.strip()
+                highlights.append({"page_number": page_number, "text": text})
+
+        # Highlight text in the PDF
+        output_pdf_path = f"{pdf_file_path}_highlighted.pdf"
+        highlight_text_in_pdf(pdf_file_path, highlights, output_pdf_path)
         # Save the extracted data to a .txt file
         with open(f"{pdf_file_path}_data.txt", "w") as f:
             for section, content in extracted_data.items():
