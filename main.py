@@ -7,7 +7,7 @@ from services.google_services import (
     load_service_account_credentials,
     list_files_in_drive,
     append_to_google_sheets,
-    delete_last_row,  # Import the new function
+    delete_last_row,
 )
 from services.llm_processor import extract_data_from_pdf
 from googleapiclient.discovery import build
