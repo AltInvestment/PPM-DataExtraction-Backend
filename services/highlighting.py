@@ -23,7 +23,7 @@ def highlight_text_in_pdf(pdf_path, extracted_data, output_pdf_path):
         return content
 
     # Define words to exclude from highlighting
-    exclude_words = {"no", "yes", "n/a"}
+    exclude_words = {"no", "yes", "n/a", "0"}
 
     try:
         doc = pymupdf.open(pdf_path)
