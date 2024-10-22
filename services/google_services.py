@@ -235,3 +235,56 @@ def get_data_from_sheets(sheets_service, spreadsheet_id, deal_id):
     except Exception as e:
         logger.error(f"An error occurred while fetching data from Sheets: {e}")
         return {}
+
+
+def get_all_deal_ids(sheets_service, spreadsheet_id):
+    """
+    Fetch all unique Deal_IDs from the Google Sheet.
+
+    Parameters:
+    - sheets_service: The Google Sheets service instance.
+    - spreadsheet_id: The ID of the Google Spreadsheet.
+
+    Returns:
+    - A list of unique Deal_IDs.
+    """
+    try:
+        # Get the spreadsheet metadata to retrieve all sheet names
+        sheet_metadata = (
+            sheets_service.spreadsheets().get(spreadsheetId=spreadsheet_id).execute()
+        )
+        sheets = sheet_metadata.get("sheets", "")
+        sheet_names = [sheet.get("properties", {}).get("title", "") for sheet in sheets]
+
+        deal_ids = set()
+
+        for sheet_name in sheet_names:
+            # Fetch data from the current sheet
+            result = (
+                sheets_service.spreadsheets()
+                .values()
+                .get(spreadsheetId=spreadsheet_id, range=sheet_name)
+                .execute()
+            )
+            values = result.get("values", [])
+            if not values:
+                continue  # Skip empty sheets
+
+            headers = values[0]
+            if "Deal_ID" not in headers:
+                continue  # Skip sheets without Deal_ID column
+
+            data_rows = values[1:]
+            deal_id_index = headers.index("Deal_ID")
+
+            # Collect Deal_IDs from the current sheet
+            for row in data_rows:
+                if len(row) > deal_id_index:
+                    deal_id = row[deal_id_index]
+                    deal_ids.add(deal_id)
+
+        return list(deal_ids)
+
+    except Exception as e:
+        logger.error(f"An error occurred while fetching Deal_IDs from Sheets: {e}")
+        return []
