@@ -9,6 +9,8 @@ from services.google_services import (
 )
 from services.background_tasks import start_background_tasks, shutdown_background_tasks
 from routers import files_router, data_router
+from fastapi.middleware.cors import CORSMiddleware
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -59,8 +61,33 @@ app = FastAPI(
     title="File Processing API",
     description="API to process PDF files from Google Drive and update Google Sheets.",
     version="1.0.0",
+    openapi_tags=[
+        {
+            "name": "Files",
+            "description": "Operations related to file processing.",
+        },
+        {
+            "name": "Data",
+            "description": "Operations for retrieving data and files.",
+        },
+    ],
     lifespan=lifespan,
 )
+# CORS Configuration
+origins = [
+    "http://localhost",  # React development server
+    "http://localhost:3000",  # Default port for Create React App
+    "https://your-production-domain.com",  # Replace with your production domain
+    # Add other origins as needed
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Allows specific origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
+
 # Include routers
 app.include_router(files_router)
 app.include_router(data_router)
