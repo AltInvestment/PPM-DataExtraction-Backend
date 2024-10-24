@@ -235,9 +235,7 @@ def get_data_from_sheets(sheets_service, spreadsheet_id, deal_id):
 
     except Exception as e:
         logger.error(f"An error occurred while fetching data from Sheets: {e}")
-        raise HTTPException(
-            status_code=429, detail="API Limit Reached"
-        )
+        raise HTTPException(status_code=429, detail="API Limit Reached")
 
 
 def get_all_deal_ids(sheets_service, spreadsheet_id):

@@ -21,6 +21,7 @@ class DataResponse(BaseModel):
         description="A dictionary containing data from all sheets related to the Deal_ID.",
     )
 
+
 class DealIDsResponse(BaseModel):
     deal_ids: List[str] = Field(
         ..., description="A list of all unique Deal_IDs from the Google Sheet."
