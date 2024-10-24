@@ -1,4 +1,5 @@
 import os
+from fastapi import HTTPException
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -234,7 +235,9 @@ def get_data_from_sheets(sheets_service, spreadsheet_id, deal_id):
 
     except Exception as e:
         logger.error(f"An error occurred while fetching data from Sheets: {e}")
-        return {}
+        raise HTTPException(
+            status_code=429, detail="API Limit Reached"
+        )
 
 
 def get_all_deal_ids(sheets_service, spreadsheet_id):
